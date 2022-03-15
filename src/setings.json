@@ -1,4 +1,5 @@
 {
     "joinroll": false,
-    "review": false
+    "review": false,
+    "ticket": true
 }

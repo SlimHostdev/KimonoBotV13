@@ -3,8 +3,12 @@ const discord = require("discord.js");
 const fs = require("fs");
 //Taal van de bot
 const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.json`, "utf-8"));
+//Setings
+const setings = JSON.parse(fs.readFileSync("./src/setings.json", "utf-8"));
 
 module.exports.run = async (client, message, args) => {
+
+    if (setings.review == false) return message.reply(`${language.cmd_off}`);
 
     const categoryID = process.env.TICKETID;
 
