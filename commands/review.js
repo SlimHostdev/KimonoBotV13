@@ -9,7 +9,7 @@ const review_seting = (setings.review);
 
 module.exports.run = async (client, message, args) => {
 
-    if (review_seting == false) return message.reply(`${language.cmd_off}`);
+    if (setings.review == false) return message.reply(`${language.cmd_off}`);
 
     //comaand opbouw met bericht en aantal sterren.
 
