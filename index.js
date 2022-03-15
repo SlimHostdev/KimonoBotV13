@@ -194,7 +194,7 @@ client.on("guildMemberAdd", member => {
         { name: `${language.join_welkom}`, value: `${member}` }
     )
 
-    if (`${setings.joinroll}` == false) return;
+    if (setings.joinroll == false) return;
 
     var role = member.guild.roles.cache.get(process.env.JOINROLL);
 
