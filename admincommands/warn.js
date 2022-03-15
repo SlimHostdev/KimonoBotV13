@@ -6,19 +6,35 @@ const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.
 
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) return message.reply(`${language.no_admin}`);
+    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) 
+    return message.reply(`${language.no_admin}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
-    if (!args[0]) return message.reply(`${language.not_specify}`);
+    if (!args[0]) return message.reply(`${language.not_specify}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
-    if (!args[1]) return message.reply(`${language.cmd_warn_no_reason}`);
+    if (!args[1]) return message.reply(`${language.cmd_warn_no_reason}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     var warnUser = message.guild.members.cache.get(message.mentions.users.first().id || message.guild.members.get(args[0]).id)
 
     var reason = args.slice(1).join(" ");
 
-    if (!warnUser) return message.reply(`${language.cant_find_user}`);
+    if (!warnUser) return message.reply(`${language.cant_find_user}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
-    if (warnUser.roles.cache.has(`${process.env.ADMINROLL}`)) return message.reply(`${language.cmd_warn_cant_warn_admin}`);
+    if (warnUser.roles.cache.has(`${process.env.ADMINROLL}`)) return message.reply(`${language.cmd_warn_cant_warn_admin}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     const warns = JSON.parse(fs.readFileSync("./data/warnings.json", "UTF8"));
 

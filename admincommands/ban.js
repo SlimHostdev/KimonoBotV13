@@ -9,23 +9,42 @@ module.exports.run = async (client, message, args) => {
     //Log chat
     const adminlog = message.member.guild.channels.cache.get(process.env.ADMINLOGS);
     
-    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) return message.reply(`${language.no_admin}`);
+    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) 
+    return message.reply(`${language.no_admin}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     //(prefix)ban naam reden
 
-    if (!message.guild.me.permissions.has("BAN_MEMBERS")) return message.reply(`${language.cmd_ban_no_purm}`);
+    if (!message.guild.me.permissions.has("BAN_MEMBERS")) return message.reply(`${language.cmd_ban_no_purm}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
-    if (!args[0]) return message.reply(`${language.not_specify}`);
+    if (!args[0]) return message.reply(`${language.not_specify}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
-    if (!args[1]) return message.reply(`${language.cmd_ban_no_reason}`);
+    if (!args[1]) return message.reply(`${language.cmd_ban_no_reason}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     //try catch
 
     var banUser = message.guild.members.cache.get(message.mentions.users.first().id || message.guild.members.get(args[0]).id)
 
-    if (!banUser) return message.reply(`${language.cant_find_user}`);
+    if (!banUser) return message.reply(`${language.cant_find_user}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
-    if (banUser.roles.cache.has(`${process.env.ADMINROLL}`)) return message.reply(`${language.cmd_ban_cant_ban_admin}`);
+    if (banUser.roles.cache.has(`${process.env.ADMINROLL}`)) return message.reply(`${language.cmd_ban_cant_ban_admin}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     var reason = args.slice(1).join(" ");
 

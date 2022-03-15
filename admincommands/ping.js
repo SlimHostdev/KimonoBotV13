@@ -7,7 +7,11 @@ const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.
 
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) return message.reply(`${language.no_admin}`);
+    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) 
+    return message.reply(`${language.no_admin}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     var botEmbed = new discord.MessageEmbed()
         .setTitle(`${language.cmd_ping_title}`)
