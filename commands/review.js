@@ -5,7 +5,6 @@ const fs = require("fs");
 const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.json`, "utf-8"));
 //Setings
 const setings = JSON.parse(fs.readFileSync("./src/setings.json", "utf-8"));
-const review_seting = (setings.review);
 
 module.exports.run = async (client, message, args) => {
 
