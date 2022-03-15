@@ -22,6 +22,7 @@
     "not_specify": "You must specify a person.",
     "cant_find_user": "I can't find anyone on the server with this name",
     "disc": "Description",
+    "cmd_off": "This command is turnt off!",
 
     "err_title": "ERROR",
     "err_disc": "OOPS!!",

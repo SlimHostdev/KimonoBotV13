@@ -41,6 +41,9 @@ const DB = mysql.createConnection({
 //File server
 const fs = require("fs");
 
+//Setings
+const setings = JSON.parse(fs.readFileSync("./src/setings.json", "utf-8"));
+
 //Main Data
 const packege = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
 
@@ -190,6 +193,8 @@ client.on("guildMemberAdd", member => {
     .addFields(
         { name: `${language.join_welkom}`, value: `${member}` }
     )
+
+    if (`${setings.joinroll}` == false) return;
 
     var role = member.guild.roles.cache.get(process.env.JOINROLL);
 

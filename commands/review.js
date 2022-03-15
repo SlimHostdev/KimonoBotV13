@@ -3,6 +3,8 @@ const discord = require("discord.js");
 const fs = require("fs");
 //Taal van de bot
 const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.json`, "utf-8"));
+//Setings
+const setings = JSON.parse(fs.readFileSync("./src/setings.json", "utf-8"));
 
 module.exports.run = async (client, message, args) => {
 
@@ -15,6 +17,8 @@ module.exports.run = async (client, message, args) => {
     const messageReview = args.splice(1,args.length).join(" ") || `**${language.cmd_review_no_msg}**`;
 
     const reviewChannel = message.member.guild.channels.cache.get(process.env.REVIEWCHAT);
+
+    if (`${setings.review}` == false) return message.reply(`${language.cmd_review_off}`);
 
     if(!reviewChannel) return message.reply(`${language.cmd_review_no_channel}`);
 
