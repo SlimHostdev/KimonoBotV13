@@ -5,10 +5,11 @@ const fs = require("fs");
 const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.json`, "utf-8"));
 //Setings
 const setings = JSON.parse(fs.readFileSync("./src/setings.json", "utf-8"));
+const review_seting = (setings.review);
 
 module.exports.run = async (client, message, args) => {
 
-    if (`${setings.review}` == false) return message.reply(`${language.cmd_off}`);
+    if (review_seting == false) return message.reply(`${language.cmd_off}`);
 
     //comaand opbouw met bericht en aantal sterren.
 
