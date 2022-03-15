@@ -22,6 +22,7 @@
     "not_specify": "U moet een persoon opgeven.",
     "cant_find_user": "Ik kan niemand op de server vinden met deze naam",
     "disc": "Beschrijving",
+    "cmd_off": "Deze command staat uit!",
 
     "err_title": "ERROR",
     "err_disc": "OEPS!!",

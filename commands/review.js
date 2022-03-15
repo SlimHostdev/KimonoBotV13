@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
 
     const reviewChannel = message.member.guild.channels.cache.get(process.env.REVIEWCHAT);
 
-    if (`${setings.review}` == false) return message.reply(`${language.cmd_review_off}`);
+    if (`${setings.review}` == false) return message.reply(`${language.cmd_off}`);
 
     if(!reviewChannel) return message.reply(`${language.cmd_review_no_channel}`);
 
