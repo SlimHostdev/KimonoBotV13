@@ -7,12 +7,11 @@ const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.
 
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) {
-//        return message.reply("You're Not an ADMIN so you can't do this.");
-    }
-    else if (!message.member.roles.cache.has(`${process.env.DEVROLL}`)) {
-//        return message.reply("You're Not an DEV so you can't do this.");
-    } return message.reply("You're Not an ADMIN so you can't do this.");
+    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) 
+    return message.reply("You're Not an ADMIN so you can't do this.").then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     try {
 
