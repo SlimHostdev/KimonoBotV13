@@ -8,7 +8,10 @@ const setings = JSON.parse(fs.readFileSync("./src/setings.json", "utf-8"));
 
 module.exports.run = async (client, message, args) => {
 
-    if (setings.review == false) return message.reply(`${language.cmd_off}`);
+    if (setings.review == false) return message.reply(`${language.cmd_off}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     //comaand opbouw met bericht en aantal sterren.
 

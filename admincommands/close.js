@@ -3,8 +3,15 @@ const discord = require("discord.js");
 const fs = require("fs");
 //Taal van de bot
 const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.json`, "utf-8"));
+//Setings
+const setings = JSON.parse(fs.readFileSync("./src/setings.json", "utf-8"));
 
 module.exports.run = async (client, message, args) => {
+
+    if (setings.review == false) return message.reply(`${language.cmd_off}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
 
     if (!message.member.roles.cache.has(`${process.env.TICKETSTAFF}`)) return message.reply(`${language.no_ticket_staff}`).then(msg => {
         message.delete()
