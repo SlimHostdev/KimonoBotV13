@@ -132,9 +132,9 @@ client.once("ready", () => {
 
     const statusOptions = [
         `${process.env.STATUS}`,
-        "-help",
-        "-info",
-        "-serverinfo"
+        `${process.env.PREFFIX}help`,
+        `${process.env.PREFFIX}info`,
+        `${process.env.PREFFIX}serverinfo`
     ]
 
     let counter =0;
