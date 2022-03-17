@@ -46,6 +46,16 @@ module.exports.run = async (client, message, args) => {
         setTimeout(() => msg.delete(), 10000);
     });
 
+    if (banUser.roles.cache.has(`${process.env.MODROLL}`)) return message.reply(`${language.cmd_ban_cant_ban_admin}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
+
+    if (banUser.roles.cache.has(`${process.env.DEVROLL}`)) return message.reply(`${language.cmd_ban_cant_ban_admin}`).then(msg => {
+        message.delete()
+        setTimeout(() => msg.delete(), 10000);
+    });
+
     var reason = args.slice(1).join(" ");
 
     var embedPrompt = new discord.MessageEmbed()
@@ -118,6 +128,12 @@ module.exports.run = async (client, message, args) => {
                     msg.delete();
 
                     if (banUser.roles.cache.has(`${process.env.ADMINROLL}`))
+                    return message.reply(`${language.cmd_ban_cant_ban_admin}`);
+
+                    if (banUser.roles.cache.has(`${process.env.MODROLL}`))
+                    return message.reply(`${language.cmd_ban_cant_ban_admin}`);
+
+                    if (banUser.roles.cache.has(`${process.env.DEVROLL}`))
                     return message.reply(`${language.cmd_ban_cant_ban_admin}`);
 
                     msg.delete();
