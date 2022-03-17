@@ -9,8 +9,8 @@ module.exports.run = async (client, message, args) => {
     //Log chat
     const adminlog = message.member.guild.channels.cache.get(process.env.ADMINLOGS);
     
-    if (!message.member.roles.cache.has(`${process.env.ADMINROLL}`)) 
-    return message.reply(`${language.no_admin}`).then(msg => {
+    if (!message.member.roles.cache.has(`${process.env.MODROLL}`)) 
+    return message.reply(`${language.no_mod}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });
