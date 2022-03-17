@@ -8,7 +8,7 @@ const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.
 module.exports.run = async (client, message, args) => {
 
     if (!message.member.roles.cache.has(`${process.env.DEVROLL}`)) 
-    return message.reply(`${language.no_admin}`).then(msg => {
+    return message.reply(`${language.no_dev}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });

@@ -7,7 +7,7 @@ const language = JSON.parse(fs.readFileSync(`./language/${process.env.LANGUAGE}.
 module.exports.run = async (client, message, args) => {
 
     if (!message.member.roles.cache.has(`${process.env.MODROLL}`)) 
-    return message.reply(`${language.no_admin}`).then(msg => {
+    return message.reply(`${language.no_mod}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });
@@ -36,12 +36,12 @@ module.exports.run = async (client, message, args) => {
         setTimeout(() => msg.delete(), 10000);
     });
 
-    if (warnUser.roles.cache.has(`${process.env.MODROLL}`)) return message.reply(`${language.cmd_warn_cant_warn_admin}`).then(msg => {
+    if (warnUser.roles.cache.has(`${process.env.MODROLL}`)) return message.reply(`${language.cmd_warn_cant_warn_mod}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });
 
-    if (warnUser.roles.cache.has(`${process.env.DEVROLL}`)) return message.reply(`${language.cmd_warn_cant_warn_admin}`).then(msg => {
+    if (warnUser.roles.cache.has(`${process.env.DEVROLL}`)) return message.reply(`${language.cmd_warn_cant_warn_dev}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });

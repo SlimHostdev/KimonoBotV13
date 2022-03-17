@@ -46,12 +46,12 @@ module.exports.run = async (client, message, args) => {
         setTimeout(() => msg.delete(), 10000);
     });
 
-    if (banUser.roles.cache.has(`${process.env.MODROLL}`)) return message.reply(`${language.cmd_ban_cant_ban_admin}`).then(msg => {
+    if (banUser.roles.cache.has(`${process.env.MODROLL}`)) return message.reply(`${language.cmd_ban_cant_ban_mod}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });
 
-    if (banUser.roles.cache.has(`${process.env.DEVROLL}`)) return message.reply(`${language.cmd_ban_cant_ban_admin}`).then(msg => {
+    if (banUser.roles.cache.has(`${process.env.DEVROLL}`)) return message.reply(`${language.cmd_ban_cant_ban_dev}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });

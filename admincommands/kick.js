@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     const adminlog = message.member.guild.channels.cache.get(process.env.ADMINLOGS);
     
     if (!message.member.roles.cache.has(`${process.env.MODROLL}`)) 
-    return message.reply(`${language.no_admin}`).then(msg => {
+    return message.reply(`${language.no_mod}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });
@@ -46,12 +46,12 @@ module.exports.run = async (client, message, args) => {
         setTimeout(() => msg.delete(), 10000);
     });
 
-    if (kickUser.roles.cache.has(`${process.env.MODROLL}`)) return message.reply(`${language.cmd_kick_cant_kick_admin}`).then(msg => {
+    if (kickUser.roles.cache.has(`${process.env.MODROLL}`)) return message.reply(`${language.cmd_kick_cant_kick_mod}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });
 
-    if (kickUser.roles.cache.has(`${process.env.DEVROLL}`)) return message.reply(`${language.cmd_kick_cant_kick_admin}`).then(msg => {
+    if (kickUser.roles.cache.has(`${process.env.DEVROLL}`)) return message.reply(`${language.cmd_kick_cant_kick_dev}`).then(msg => {
         message.delete()
         setTimeout(() => msg.delete(), 10000);
     });
